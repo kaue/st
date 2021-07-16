@@ -113,7 +113,8 @@ float alpha = 0.8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#1c1b19",
+	/* "#1c1b19", */
+	"#3d3b38",
 	"#ef2f27",
 	"#519f50",
 	"#fbb829",
@@ -241,6 +242,8 @@ MouseKey mkeys[] = {
 
 static char *openurlcmd[] = { "/bin/sh", "-c", "st-urlhandler", "externalpipe", NULL };
 
+static char *openinemacscmd[] = { "/bin/sh", "-c", "st-urlhandler", "externalpipe", NULL };
+
 static char *copyurlcmd[] = { "/bin/sh", "-c",
     "tmp=$(sed 's/.*│//g' | tr -d '\n' | grep -aEo '(((http|https)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./@$&%?$#=_-]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)' | uniq | sed 's/^www./http:\\/\\/www\\./g' ); IFS=; [ ! -z $tmp ] && echo $tmp | dmenu -i -p 'Copy which url?' -l 10 | tr -d '\n' | xclip -selection clipboard",
     "externalpipe", NULL };
@@ -325,7 +328,7 @@ static uint ignoremod = Mod2Mask|XK_SWITCH_MOD;
  * Note that if you want to use ShiftMask with selmasks, set this to an other
  * modifier, set to 0 to not use it.
  */
-static uint forceselmod = ShiftMask;
+static uint forceselmod = 0;
 
 /*
  * This is the huge key array which defines all compatibility to the Linux
